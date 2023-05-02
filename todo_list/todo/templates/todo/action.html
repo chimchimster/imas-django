@@ -1,0 +1,17 @@
+{% extends 'todo/layout.html' %}
+
+{% block body %}
+<div style="margin: 30px; padding: 30px;">
+    <h3>{{ objs.title }}</h3>
+    <p>{{ objs.content }}</p>
+    <p>Запись от пользователя: <strong>{{ objs.user }}</strong></p>
+    <p>Время публикации записи: <data value="{{ obj.publish }}">{{ objs.publish }}</data></p>
+    <a href="{% url 'index' %}"><button type="button">Назад к задачам</button></a>
+    {% if objs.status == 'опубликовано' %}
+        <a href="{% url 'to_archive' slug=objs.slug %}"><button type="button">В архив</button></a>
+    {% else %}
+        <a href="{% url 'from_archive' slug=objs.slug %}"><button type="button">Из архива</button></a>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'todo/layout.html' %}
+
+{% block body %}
+
+
+
+<div style="margin: 30px; padding: 30px; clear:both; text-align:right; float: left;">
+    <h3>Добавить задачу</h3>
+    <form method="post">
+        {% csrf_token %}
+        <p>Введите заголовок записи: {{ form.title }}</p>
+        <p>Введите запись: {{ form.content }}</p>
+        <input type="submit" value="Добавить TODO">
+    </form>
+</div>
+{% endblock %}

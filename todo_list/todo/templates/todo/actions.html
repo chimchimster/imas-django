@@ -1,0 +1,16 @@
+{% extends 'todo/layout.html' %}
+
+{% block body %}
+
+{% if is_archived == False %}
+    <h3 style="padding: 15px;">Текущие задачи</h3>
+{% else %}
+    <h3 style="padding: 15px;">Архив задач</h3>
+{% endif %}
+
+{% for obj in objs %}
+    <ul>
+        <li><a href="{% url 'todo' slug=obj.slug %}">{{ obj }}</a></li>
+    </ul>
+{% endfor %}
+{% endblock %}

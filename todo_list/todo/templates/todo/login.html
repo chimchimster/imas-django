@@ -1,0 +1,15 @@
+{% extends 'todo/layout.html' %}
+
+{% block body %}
+<div style="margin: 30px; padding: 30px; clear:both; text-align:right; float: left;">
+    <form method="post">
+    {% csrf_token %}
+        <p>Введите имя пользователя: {{ form.username }}</p>
+        <p>Введите пароль: {{ form.password }}</p>
+        <input type="submit" value="Войти">
+    </form>
+</div>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+{% endblock %}
