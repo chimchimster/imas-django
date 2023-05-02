@@ -16,7 +16,6 @@ def choose_template(template):
         def wraps(*args, **kwargs):
 
             result = func(*args, **kwargs)
-            print(result)
 
             if isinstance(result, tuple):
                 context = {
@@ -41,14 +40,18 @@ def choose_template(template):
 
 @choose_template('todo/actions.html')
 def index(request):
-
-    return Action.objects.filter(status='опубликовано').all(), False
+    try:
+        return Action.objects.filter(status='опубликовано', user=request.user).all(), False
+    except:
+        return Action.objects.filter(status='опубликовано').all(), False
 
 
 @choose_template('todo/actions.html')
 def todo_archived(request):
-
-    return Action.objects.filter(status='неопубликовано').all(), True
+    try:
+        return Action.objects.filter(status='неопубликовано', user=request.user).all(), True
+    except:
+        return Action.objects.filter(status='неопубликовано').all(), False
 
 
 @choose_template('todo/action.html')

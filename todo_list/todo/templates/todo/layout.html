@@ -14,13 +14,13 @@
             {% endif %}
         </div>
         <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Активный TODO</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'archive' %}">Архивный TODO</a>
-            </li>
             {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Активный TODO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archive' %}">Архивный TODO</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'addtodo' %}">Добавить TODO</a>
                 </li>
