@@ -10,7 +10,7 @@
 
 {% for obj in objs %}
     <ul>
-        <li><a href="{% url 'todo' slug=obj.slug %}">{{ obj }}</a></li>
+        <li><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></li>
     </ul>
 {% endfor %}
 {% endblock %}

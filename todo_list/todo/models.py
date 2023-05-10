@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -62,3 +63,5 @@ class Action(models.Model): # Название таблицы в базе дан
     def __str__(self):
         return self.title # Меняем строковое представление каждого объекта для админ панели
 
+    def get_absolute_url(self):
+        return reverse('todo', args=[self.slug])
